@@ -72,7 +72,7 @@ app.post('/api/casino-live', async (req, res) => {
         console.log('[Debug Log] API Response Status:', response.status);
 
         // Cache the response in Redis
-        await redisClient.set(cacheKey, JSON.stringify(response.data), { EX: 10 });
+        await redisClient.set(cacheKey, JSON.stringify(response.data), { EX: 30 });
 
         res.status(response.status).json(response.data);
     } catch (error) {
